@@ -8,7 +8,7 @@ class Category extends Equatable {
   @override
   List<Object?> get props => [name, imageURL];
 
-  static List<Category> categories = [
+  static List<Category> categories = const [
     Category(
       name: 'Soft Drink',
       imageURL:

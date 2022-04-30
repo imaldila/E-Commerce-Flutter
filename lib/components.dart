@@ -12,6 +12,21 @@ TextStyle kTextStyle24Bold = GoogleFonts.poppins(
 );
 
 TextStyle kTextStyle18 = GoogleFonts.poppins(
-  fontSize: 24,
+  fontSize: 18,
   color: Colors.black,
+);
+TextStyle kTextStyle18Bold = GoogleFonts.poppins(
+  fontSize: 18,
+  fontWeight: FontWeight.bold,
+  color: Colors.black,
+);
+TextStyle kTextStyle20White = GoogleFonts.poppins(
+  fontSize: 20,
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+);
+TextStyle kTextStyle12White = GoogleFonts.poppins(
+  fontSize: 12,
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
 );
