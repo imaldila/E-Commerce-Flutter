@@ -80,7 +80,7 @@ class Product extends Equatable {
       name: 'Soft Drink #1',
       category: 'Soft Drinks',
       imageUrl:
-          'https://images.unsplash.com/photo-1598614187854-26a60e982dc4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80', //https://unsplash.com/photos/dO9A6mhSZZY
+          'https://images.unsplash.com/photo-1567103472667-6898f3a79cf2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHNvZnQlMjBkcmlua3N8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60', 
       price: 2.99,
       isRecommended: true,
       isPopular: false,

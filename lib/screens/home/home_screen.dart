@@ -1,5 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:e_commerce_bloc/components.dart';
+import 'package:e_commerce_bloc/constant.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/models.dart';
@@ -25,18 +25,20 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: const CustomNavBar(),
       body: Column(
         children: [
-          CarouselSlider(
-            options: CarouselOptions(
-              aspectRatio: 1.5,
-              viewportFraction: 0.9,
-              enlargeStrategy: CenterPageEnlargeStrategy.height,
-              enlargeCenterPage: true,
-              // enableInfiniteScroll: false,
-              // autoPlay: true,
+          Container(
+            child: CarouselSlider(
+              options: CarouselOptions(
+                aspectRatio: 1.5,
+                viewportFraction: 0.9,
+                enlargeStrategy: CenterPageEnlargeStrategy.height,
+                enlargeCenterPage: true,
+                // enableInfiniteScroll: false,
+                // autoPlay: true,
+              ),
+              items: Category.categories
+                  .map((category) => CardHeroCarousel(category: category))
+                  .toList(),
             ),
-            items: Category.categories
-                .map((category) => CardHeroCarousel(category: category))
-                .toList(),
           ),
           const SectionTitle(title: 'RECOMMENDED'),
           ProductCarousel(
@@ -44,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                 .where((product) => product.isRecommended)
                 .toList(),
           ),
-          const SectionTitle(title: 'POPULAR'),
+          const SectionTitle(title: 'MOST POPULAR'),
           ProductCarousel(
             products: Product.products
                 .where((product) => product.isPopular)

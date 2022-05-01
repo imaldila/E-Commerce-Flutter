@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../components.dart';
+
+import '../constant.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   const CustomAppBar({
@@ -15,6 +16,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       elevation: 0,
       backgroundColor: Colors.transparent,
+      centerTitle: true,
       title: Container(
         padding: const EdgeInsets.symmetric(
           vertical: kVerPad,
@@ -28,7 +30,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         ),
         child: Text(
           title,
-          style: kTextStyle24Bold,
+          style: kTextStyle24BoldWhite,
         ),
       ),
       iconTheme: const IconThemeData(

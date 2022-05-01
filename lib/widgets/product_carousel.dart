@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../components.dart';
+import '../constant.dart';
 import '../models/models.dart';
 import 'widgets.dart';
 
