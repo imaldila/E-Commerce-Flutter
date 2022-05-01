@@ -1,5 +1,7 @@
+import 'package:e_commerce_bloc/models/models.dart';
 import 'package:flutter/material.dart';
 
+import '../../constant.dart';
 import '../../widgets/widgets.dart';
 
 class WhislistScreen extends StatelessWidget {
@@ -15,11 +17,32 @@ class WhislistScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(
+    return Scaffold(
+      appBar: const CustomAppBar(
         title: 'Whislist',
       ),
-      bottomNavigationBar: CustomNavBar(),
+      bottomNavigationBar: const CustomNavBar(),
+      body: GridView.builder(
+        padding: const EdgeInsets.symmetric(
+          vertical: kPadding,
+          horizontal: kPadding / 2,
+        ),
+        itemCount: Product.products.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 1,
+          childAspectRatio: 2.4,
+        ),
+        itemBuilder: (context, index) {
+          return Center(
+            child: ProductCard(
+              product: Product.products[index],
+              widthFactor: 1.1,
+              leftPosition: 100,
+              isWishList: true,
+            ),
+          );
+        },
+      ),
     );
   }
 }

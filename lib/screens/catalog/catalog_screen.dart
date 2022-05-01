@@ -1,5 +1,4 @@
 import 'package:e_commerce_bloc/constant.dart';
-import 'package:e_commerce_bloc/models/category_model.dart';
 import 'package:e_commerce_bloc/models/models.dart';
 import 'package:flutter/material.dart';
 
@@ -26,31 +25,29 @@ class CatalogScreen extends StatelessWidget {
         .where((product) => product.category == category.name)
         .toList();
     return Scaffold(
-        appBar: CustomAppBar(
-          title: category.name,
+      appBar: CustomAppBar(
+        title: category.name,
+      ),
+      bottomNavigationBar: const CustomNavBar(),
+      body: GridView.builder(
+        padding: const EdgeInsets.symmetric(
+          vertical: kPadding,
+          horizontal: kPadding / 2,
         ),
-        bottomNavigationBar: const CustomNavBar(),
-        body: GridView.builder(
-          padding: const EdgeInsets.symmetric(
-            vertical: kPadding,
-            horizontal: kPadding / 2,
-          ),
-          itemCount: categoryProducts.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 1.15,
-          ),
-          itemBuilder: (context, index) {
-            return Center(
-              child: ProductCard(
-                product:categoryProducts[index],
-                widthFactor: 2.2,
-              ),
-            );
-          },
-        )
-
-        //
-        );
+        itemCount: categoryProducts.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 1.15,
+        ),
+        itemBuilder: (context, index) {
+          return Center(
+            child: ProductCard(
+              product: categoryProducts[index],
+              widthFactor: 2.2,
+            ),
+          );
+        },
+      ),
+    );
   }
 }
