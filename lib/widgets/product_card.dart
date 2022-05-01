@@ -54,29 +54,25 @@ class ProductCard extends StatelessWidget {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(kPadding / 2),
-                child: Expanded(
-                  flex: 3,
-                  child: Row(
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(product.name, style: kTextStyle12White),
-                          Text('\$${product.price}', style: kTextStyle12White),
-                        ],
+                child: Row(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(product.name, style: kTextStyle12White),
+                        Text('\$${product.price}', style: kTextStyle12White),
+                      ],
+                    ),
+                    const Spacer(),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.add_circle,
+                        color: Colors.white,
                       ),
-                      Expanded(
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.add_circle,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
