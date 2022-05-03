@@ -1,9 +1,10 @@
 import 'package:e_commerce_bloc/constant.dart';
-import 'package:e_commerce_bloc/models/models.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../blocs/blocs.dart';
+import '../../models/models.dart';
 import '../../widgets/widgets.dart';
 
 class CartScreen extends StatelessWidget {
@@ -90,10 +91,10 @@ class CartScreen extends StatelessWidget {
                         height: 400,
                         child: ListView.builder(
                           itemCount: state.cart.products.length,
+                          shrinkWrap: true,
                           itemBuilder: (context, index) {
                             return CartProductCard(
-                              product: state.cart.products[index],
-                            );
+                                product: state.cart.products[index]);
                           },
                         ),
                       ),
@@ -183,6 +184,11 @@ class CartScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                      ElevatedButton(
+                          onPressed: () {
+                            // print(state.cart.products.length);
+                          },
+                          child: const Text('add'))
                     ],
                   ),
                 ],

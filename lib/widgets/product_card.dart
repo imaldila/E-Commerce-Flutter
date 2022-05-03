@@ -77,8 +77,7 @@ class ProductCard extends StatelessWidget {
                         Text('\$${product.price}', style: kTextStyle12White),
                       ],
                     ),
-                    const Spacer(),
-                    // const SizedBox(width: kSizeBox,),
+                    // const Spacer(),
                     BlocBuilder<CartBloc, CartState>(
                       builder: (context, state) {
                         if (state is CartLoading) {
@@ -88,18 +87,22 @@ class ProductCard extends StatelessWidget {
                         }
 
                         if (state is CartLoaded) {
-                          return IconButton(
-                            onPressed: () {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Added to your Cart!'),
-                                ),
-                              );
-                              context.read<CartBloc>().add(AddProduct(product));
-                            },
-                            icon: const Icon(
-                              Icons.add_circle,
-                              color: Colors.white,
+                          return Expanded(
+                            child: IconButton(
+                              onPressed: () {
+                                context
+                                    .read<CartBloc>()
+                                    .add(AddProduct(product));
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Added to your Cart!'),
+                                  ),
+                                );
+                              },
+                              icon: const Icon(
+                                Icons.add_circle,
+                                color: Colors.white,
+                              ),
                             ),
                           );
                         } else {
@@ -108,11 +111,13 @@ class ProductCard extends StatelessWidget {
                       },
                     ),
                     isWishList
-                        ? IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.delete,
-                              color: Colors.white,
+                        ? Expanded(
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.delete,
+                                color: Colors.white,
+                              ),
                             ),
                           )
                         : Container()
