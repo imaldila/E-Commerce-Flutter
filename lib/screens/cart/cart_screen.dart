@@ -26,31 +26,120 @@ class CartScreen extends StatelessWidget {
         padding:
             const EdgeInsets.symmetric(horizontal: kHorPad, vertical: kVerPad),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Column(
               children: [
-                Text(
-                  'Add \$20.0 for FREE Delivery',
-                  style: kTextStyle14BoldBlack,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Add \$20.0 for FREE Delivery',
+                      style: kTextStyle14BoldBlack,
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.amber,
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(kBorder))),
+                      onPressed: () {},
+                      child: Text(
+                        'Add More Item',
+                        style: kTextStyle12Black,
+                      ),
+                    ),
+                  ],
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.amber,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16))),
-                  onPressed: () {},
-                  child: Text(
-                    'Add More Item',
-                    style: kTextStyle12Black,
+                CartProductCard(product: Product.products[0]),
+                CartProductCard(product: Product.products[1]),
+                CartProductCard(product: Product.products[2]),
+              ],
+            ),
+            Column(
+              children: [
+                const Divider(
+                  thickness: 3,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: kHorPad * 4),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'SUBTOTAL',
+                            style: kTextStyle14BoldBlack,
+                          ),
+                          Text(
+                            '\$5.98',
+                            style: kTextStyle14BoldBlack,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: kSizeBox,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'DELIVERY FEE',
+                            style: kTextStyle14BoldBlack,
+                          ),
+                          Text(
+                            '\$2.55',
+                            style: kTextStyle14BoldBlack,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
+                ),
+                const SizedBox(
+                  height: kSizeBox,
+                ),
+                Stack(
+                  children: [
+                    Container(
+                      height: 60,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Colors.black.withAlpha(50),
+                      ),
+                    ),
+                    Container(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.all(5),
+                      decoration: const BoxDecoration(
+                        color: Colors.black,
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.symmetric(horizontal: kHorPad * 3),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'SUBTOTAL',
+                              style: kTextStyle14BoldBlack.copyWith(
+                                  color: Colors.white),
+                            ),
+                            Text(
+                              '\$5.98',
+                              style: kTextStyle14BoldBlack.copyWith(
+                                  color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-            CartProductCard(
-              product: Product.products[0],
-            )
           ],
         ),
       ),

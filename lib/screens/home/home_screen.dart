@@ -1,5 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:e_commerce_bloc/constant.dart';
+
 import 'package:flutter/material.dart';
 
 import '../../models/models.dart';
@@ -48,9 +48,8 @@ class HomeScreen extends StatelessWidget {
           ),
           const SectionTitle(title: 'MOST POPULAR'),
           ProductCarousel(
-            products: Product.products
-                .where((product) => product.isPopular)
-                .toList(),
+            products:
+                Product.products.where((product) => product.isPopular).toList(),
           ),
         ],
       ),

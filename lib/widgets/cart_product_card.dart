@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../constant.dart';
 import '../models/product_model.dart';
 
-
 class CartProductCard extends StatelessWidget {
   final Product product;
   const CartProductCard({Key? key, required this.product}) : super(key: key);
@@ -11,16 +10,18 @@ class CartProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: kPadding / 2),
+      padding: const EdgeInsets.only(bottom: kPadding),
       child: Row(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(kBorder),
-            child: Image.network(
-              product.imageUrl,
-              height: 100,
-              width: 80,
-              fit: BoxFit.cover,
+          Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(kBorder),
+              child: Image.network(
+                product.imageUrl,
+                height: 100,
+                width: 80,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           const SizedBox(
@@ -47,7 +48,8 @@ class CartProductCard extends StatelessWidget {
               const Text('1'),
               IconButton(onPressed: () {}, icon: const Icon(Icons.add_circle)),
             ],
-          )
+          ),
+         
         ],
       ),
     );
