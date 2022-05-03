@@ -1,6 +1,8 @@
 import 'package:e_commerce_bloc/models/models.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../blocs/blocs.dart';
 import '../../constant.dart';
 import '../../widgets/widgets.dart';
 
@@ -22,24 +24,39 @@ class WhislistScreen extends StatelessWidget {
         title: 'Whislist',
       ),
       bottomNavigationBar: const CustomNavBar(),
-      body: GridView.builder(
-        padding: const EdgeInsets.symmetric(
-          vertical: kPadding,
-          horizontal: kPadding / 2,
-        ),
-        itemCount: Product.products.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1,
-          childAspectRatio: 2.4,
-        ),
-        itemBuilder: (context, index) {
-          return Center(
-            child: ProductCard(
-              product: Product.products[index],
-              widthFactor: 1.1,
-              leftPosition: 100,
-              isWishList: true,
-            ),
+      body: BlocBuilder<WishlistBloc, WishlistState>(
+        builder: (context, state) {
+          if (state is WishlistLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (state is WishlistLoaded) {
+            return GridView.builder(
+              padding: const EdgeInsets.symmetric(
+                vertical: kPadding,
+                horizontal: kPadding / 2,
+              ),
+              itemCount: state.wishList.products.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1,
+                childAspectRatio: 2.4,
+              ),
+              itemBuilder: (context, index) {
+                return Center(
+                  child: ProductCard(
+                    product: state.wishList.products[index],
+                    widthFactor: 1.1,
+                    leftPosition: 100,
+                    isWishList: true,
+                  ),
+                );
+              },
+            );
+          }
+          return Text(
+            'Something went wrong!',
+            style: kTextStyle18Bold,
           );
         },
       ),
