@@ -30,7 +30,10 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             onPressed: () {
               Navigator.pushNamed(context, '/whislist');
             },
-            icon: const Icon(Icons.favorite),
+            icon: const Icon(
+              Icons.favorite,
+              color: Colors.red,
+            ),
           )
         ],
       ),

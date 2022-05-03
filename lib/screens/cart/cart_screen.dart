@@ -28,7 +28,6 @@ class CartScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-             
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
@@ -55,7 +54,7 @@ class CartScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Add \$20.0 for FREE Delivery',
+                      Cart().freeDeliveryString,
                       style: kTextStyle14BoldBlack,
                     ),
                     ElevatedButton(
@@ -72,9 +71,19 @@ class CartScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                CartProductCard(product: Product.products[0]),
-                CartProductCard(product: Product.products[1]),
-                CartProductCard(product: Product.products[2]),
+                const SizedBox(
+                  height: kSizeBox,
+                ),
+                SizedBox(
+                  height: 400,
+                  child: ListView.builder(
+                      itemCount: Cart().products.length,
+                      itemBuilder: (context, index) {
+                        return CartProductCard(
+                          product: Cart().products[index],
+                        );
+                      }),
+                ),
               ],
             ),
             Column(
@@ -94,7 +103,7 @@ class CartScreen extends StatelessWidget {
                             style: kTextStyle14BoldBlack,
                           ),
                           Text(
-                            '\$5.98',
+                            '\$ ${Cart().subtotalString}',
                             style: kTextStyle14BoldBlack,
                           ),
                         ],
@@ -110,7 +119,7 @@ class CartScreen extends StatelessWidget {
                             style: kTextStyle14BoldBlack,
                           ),
                           Text(
-                            '\$2.55',
+                            '\$ ${Cart().deliveryFeeString}',
                             style: kTextStyle14BoldBlack,
                           ),
                         ],
@@ -139,17 +148,17 @@ class CartScreen extends StatelessWidget {
                       ),
                       child: Padding(
                         padding:
-                            const EdgeInsets.symmetric(horizontal: kHorPad * 3),
+                            const EdgeInsets.symmetric(horizontal: kHorPad * 3.4),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'SUBTOTAL',
+                              'TOTAL',
                               style: kTextStyle14BoldBlack.copyWith(
                                   color: Colors.white),
                             ),
                             Text(
-                              '\$5.98',
+                              '\$ ${Cart().totalString}',
                               style: kTextStyle14BoldBlack.copyWith(
                                   color: Colors.white),
                             ),
