@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<WishlistBloc>(
             create: (_) => WishlistBloc()..add(StartWishlist())),
         BlocProvider<CartBloc>(
-            create: (_) => CartBloc()..add(CartStarted())),
+            create: (_) => CartBloc()..add(LoadCart())),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

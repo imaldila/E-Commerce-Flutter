@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../blocs/blocs.dart';
 import '../constant.dart';
 import '../models/models.dart';
 
@@ -39,9 +41,8 @@ class ProductCard extends StatelessWidget {
                 product.imageUrl,
                 fit: BoxFit.cover,
               ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16)
-              ),
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(16)),
             ),
           ),
           Positioned(
@@ -77,12 +78,34 @@ class ProductCard extends StatelessWidget {
                       ],
                     ),
                     const Spacer(),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.add_circle,
-                        color: Colors.white,
-                      ),
+                    // const SizedBox(width: kSizeBox,),
+                    BlocBuilder<CartBloc, CartState>(
+                      builder: (context, state) {
+                        if (state is CartLoading) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+
+                        if (state is CartLoaded) {
+                          return IconButton(
+                            onPressed: () {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Added to your Cart!'),
+                                ),
+                              );
+                              context.read<CartBloc>().add(AddProduct(product));
+                            },
+                            icon: const Icon(
+                              Icons.add_circle,
+                              color: Colors.white,
+                            ),
+                          );
+                        } else {
+                          return const Text('Something went wrong.');
+                        }
+                      },
                     ),
                     isWishList
                         ? IconButton(
