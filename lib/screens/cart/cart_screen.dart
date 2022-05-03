@@ -21,7 +21,28 @@ class CartScreen extends StatelessWidget {
       appBar: const CustomAppBar(
         title: 'Cart',
       ),
-      bottomNavigationBar: const CustomNavBar(),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.black,
+        child: Container(
+          height: 70,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+             
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                ),
+                onPressed: () {},
+                child: Text(
+                  'GO TO CHECKOUT',
+                  style: kTextStyle18Bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: Padding(
         padding:
             const EdgeInsets.symmetric(horizontal: kHorPad, vertical: kVerPad),
