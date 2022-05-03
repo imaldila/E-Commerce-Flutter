@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../blocs/blocs.dart';
 import '../constant.dart';
 import '../models/models.dart';
 
@@ -30,18 +32,17 @@ class ProductCard extends StatelessWidget {
       },
       child: Stack(
         children: [
-          Container(
-            height: 150,
-            width: widthValue,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Container(
+              height: 150,
+              width: widthValue,
               child: Image.network(
                 product.imageUrl,
                 fit: BoxFit.cover,
               ),
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(16)),
             ),
           ),
           Positioned(
@@ -76,22 +77,47 @@ class ProductCard extends StatelessWidget {
                         Text('\$${product.price}', style: kTextStyle12White),
                       ],
                     ),
-                    Expanded(
-                      flex: 3,
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.add_circle,
-                          color: Colors.white,
-                        ),
-                      ),
+                    // const Spacer(),
+                    BlocBuilder<CartBloc, CartState>(
+                      builder: (context, state) {
+                        if (state is CartLoading) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+
+                        if (state is CartLoaded) {
+                          return Expanded(
+                            child: IconButton(
+                              onPressed: () {
+                                context
+                                    .read<CartBloc>()
+                                    .add(AddProduct(product));
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Added to your Cart!'),
+                                  ),
+                                );
+                              },
+                              icon: const Icon(
+                                Icons.add_circle,
+                                color: Colors.white,
+                              ),
+                            ),
+                          );
+                        } else {
+                          return const Text('Something went wrong.');
+                        }
+                      },
                     ),
                     isWishList
-                        ? IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.delete,
-                              color: Colors.white,
+                        ? Expanded(
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.delete,
+                                color: Colors.white,
+                              ),
                             ),
                           )
                         : Container()

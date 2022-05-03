@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 const double kPadding = 16.0;
 const double kVerPad = 24.0;
 const double kHorPad = 18.0;
+const double kBorder = 16.0;
+const double kSizeBox = 12.0;
 
 const Color kColorsTitle = Color(0xFF09716B);
 const Color kColorsText = Color(0xFF034844);
@@ -38,5 +40,15 @@ TextStyle kTextStyle20White = GoogleFonts.poppins(
 TextStyle kTextStyle12White = GoogleFonts.poppins(
   fontSize: 12,
   color: Colors.white,
+  fontWeight: FontWeight.bold,
+);
+TextStyle kTextStyle12Black = GoogleFonts.poppins(
+  fontSize: 12,
+  color: Colors.black,
+  fontWeight: FontWeight.bold,
+);
+TextStyle kTextStyle14BoldBlack = GoogleFonts.poppins(
+  fontSize: 14,
+  color: Colors.black,
   fontWeight: FontWeight.bold,
 );

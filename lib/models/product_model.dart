@@ -25,7 +25,7 @@ class Product extends Equatable {
       ];
 
   static List<Product> products = const [
-     Product(
+    Product(
       // id: '1',
       name: 'Soft Drink #1',
       category: 'Soft Drinks',
@@ -80,7 +80,7 @@ class Product extends Equatable {
       name: 'Soft Drink #1',
       category: 'Soft Drinks',
       imageUrl:
-          'https://images.unsplash.com/photo-1567103472667-6898f3a79cf2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHNvZnQlMjBkcmlua3N8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60', 
+          'https://images.unsplash.com/photo-1567103472667-6898f3a79cf2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHNvZnQlMjBkcmlua3N8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
       price: 2.99,
       isRecommended: true,
       isPopular: false,

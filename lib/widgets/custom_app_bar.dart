@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../constant.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -13,37 +12,31 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-      centerTitle: true,
-      title: Container(
-        padding: const EdgeInsets.symmetric(
-          vertical: kVerPad,
-          horizontal: kHorPad,
-        ),
-        decoration: BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.circular(
-            kPadding,
-          ),
-        ),
-        child: Text(
+    return Padding(
+      padding: const EdgeInsets.only(top: kPadding),
+      child: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: Text(
           title,
-          style: kTextStyle24BoldWhite,
+          style: kTextStyle24BoldBlack,
         ),
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/whislist');
+            },
+            icon: const Icon(
+              Icons.favorite,
+              color: Colors.red,
+            ),
+          )
+        ],
       ),
-      iconTheme: const IconThemeData(
-        color: Colors.black,
-      ),
-      actions: [
-        IconButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/whislist');
-          },
-          icon: const Icon(Icons.favorite),
-        )
-      ],
     );
   }
 
