@@ -36,5 +36,5 @@ class Cart extends Equatable {
   String get totalString => total(subtotal, deliveryFee).toStringAsFixed(2);
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [products];
 }

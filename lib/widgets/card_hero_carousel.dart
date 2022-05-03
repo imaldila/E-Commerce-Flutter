@@ -31,7 +31,7 @@ class CardHeroCarousel extends StatelessWidget {
           child: Stack(
             children: <Widget>[
               Image.network(
-                product == null ? category!.imageURL : product!.imageUrl,
+                product == null ? category!.imageUrl : product!.imageUrl,
                 fit: BoxFit.cover,
                 width: 1000.0,
               ),

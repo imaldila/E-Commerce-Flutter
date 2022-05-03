@@ -24,7 +24,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     }
   }
 
-  void _onAddProduct(AddProduct event, Emitter<CartState> emit) {
+  _onAddProduct(AddProduct event, Emitter<CartState> emit) {
     if (state is CartLoaded) {
       try {
         emit(

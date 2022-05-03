@@ -184,11 +184,6 @@ class CartScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      ElevatedButton(
-                          onPressed: () {
-                            // print(state.cart.products.length);
-                          },
-                          child: const Text('add'))
                     ],
                   ),
                 ],
