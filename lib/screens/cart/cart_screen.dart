@@ -1,3 +1,5 @@
+import 'package:e_commerce_bloc/constant.dart';
+import 'package:e_commerce_bloc/models/models.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/widgets.dart';
@@ -15,11 +17,43 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(
+    return Scaffold(
+      appBar: const CustomAppBar(
         title: 'Cart',
       ),
-      bottomNavigationBar: CustomNavBar(),
+      bottomNavigationBar: const CustomNavBar(),
+      body: Padding(
+        padding:
+            const EdgeInsets.symmetric(horizontal: kHorPad, vertical: kVerPad),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Add \$20.0 for FREE Delivery',
+                  style: kTextStyle14BoldBlack,
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.amber,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16))),
+                  onPressed: () {},
+                  child: Text(
+                    'Add More Item',
+                    style: kTextStyle12Black,
+                  ),
+                ),
+              ],
+            ),
+            CartProductCard(
+              product: Product.products[0],
+            )
+          ],
+        ),
+      ),
     );
   }
 }
