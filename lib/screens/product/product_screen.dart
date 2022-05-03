@@ -101,7 +101,7 @@ class ProductScreen extends StatelessWidget {
                           style: kTextStyle12White,
                         ),
                         Text(
-                          '${product.price}',
+                          '\$ ${product.price}',
                           style: kTextStyle12White,
                         ),
                       ],

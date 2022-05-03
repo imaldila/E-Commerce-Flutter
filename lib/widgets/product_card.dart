@@ -30,12 +30,18 @@ class ProductCard extends StatelessWidget {
       },
       child: Stack(
         children: [
-          SizedBox(
+          Container(
             height: 150,
             width: widthValue,
-            child: Image.network(
-              product.imageUrl,
-              fit: BoxFit.cover,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Image.network(
+                product.imageUrl,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Positioned(
@@ -70,12 +76,14 @@ class ProductCard extends StatelessWidget {
                         Text('\$${product.price}', style: kTextStyle12White),
                       ],
                     ),
-                    const Spacer(),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.add_circle,
-                        color: Colors.white,
+                    Expanded(
+                      flex: 3,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.add_circle,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                     isWishList
