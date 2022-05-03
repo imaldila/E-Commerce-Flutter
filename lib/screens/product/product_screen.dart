@@ -59,15 +59,22 @@ class ProductScreen extends StatelessWidget {
                   );
                 },
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                ),
-                onPressed: () {},
-                child: Text(
-                  'Add to Cart',
-                  style: kTextStyle18Bold,
-                ),
+              BlocBuilder<CartBloc, CartState>(
+                builder: (context, state) {
+                  return ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                    ),
+                    onPressed: () {
+                      context.read<CartBloc>().add(AddProduct(product));
+                      Navigator.pushNamed(context, '/cart');
+                    },
+                    child: Text(
+                      'Add to Cart',
+                      style: kTextStyle18Bold,
+                    ),
+                  );
+                },
               ),
             ],
           ),

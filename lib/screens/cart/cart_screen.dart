@@ -66,7 +66,7 @@ class CartScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            const Cart().freeDeliveryString,
+                            state.cart.freeDeliveryString,
                             style: kTextStyle14BoldBlack,
                           ),
                           ElevatedButton(
@@ -118,7 +118,7 @@ class CartScreen extends StatelessWidget {
                                   style: kTextStyle14BoldBlack,
                                 ),
                                 Text(
-                                  '\$ ${const Cart().subtotalString}',
+                                  '\$ ${state.cart.subtotalString}',
                                   style: kTextStyle14BoldBlack,
                                 ),
                               ],
@@ -134,7 +134,7 @@ class CartScreen extends StatelessWidget {
                                   style: kTextStyle14BoldBlack,
                                 ),
                                 Text(
-                                  '\$ ${const Cart().deliveryFeeString}',
+                                  '\$ ${state.cart.deliveryFeeString}',
                                   style: kTextStyle14BoldBlack,
                                 ),
                               ],
