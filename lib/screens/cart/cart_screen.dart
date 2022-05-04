@@ -165,7 +165,7 @@ class CartScreen extends StatelessWidget {
                             width: MediaQuery.of(context).size.width,
                             decoration: BoxDecoration(
                               color: Colors.black.withAlpha(50),
-                              borderRadius: BorderRadius.circular(kBorder),
+                              borderRadius: BorderRadius.circular(kBorder / 2),
                             ),
                           ),
                           Container(
@@ -174,7 +174,7 @@ class CartScreen extends StatelessWidget {
                             margin: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
                               color: kColorCard,
-                              borderRadius: BorderRadius.circular(kBorder),
+                              borderRadius: BorderRadius.circular(kBorder / 2),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
