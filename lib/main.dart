@@ -1,8 +1,10 @@
+import 'package:e_commerce_bloc/blocs/blocs.dart';
 import 'package:e_commerce_bloc/blocs/cart/cart_bloc.dart';
 import 'package:e_commerce_bloc/blocs/category/category_bloc.dart';
 import 'package:e_commerce_bloc/blocs/wishlist/wishlist_bloc.dart';
 import 'package:e_commerce_bloc/config/app_router.dart';
 import 'package:e_commerce_bloc/repository/category/category_repository.dart';
+import 'package:e_commerce_bloc/repository/product/product_repository.dart';
 import 'package:e_commerce_bloc/simple_bloc_observer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +46,13 @@ class MyApp extends StatelessWidget {
           create: (context) => CategoryBloc(
             categoryRepository: CategoryRepository(),
           )..add(LoadCategory()),
+        ),
+        BlocProvider<ProductBloc>(
+          create: (context) => ProductBloc(
+            productRepository: ProductRepository(),
+          )..add(
+              LoadProduct(),
+            ),
         ),
       ],
       child: const MaterialApp(
