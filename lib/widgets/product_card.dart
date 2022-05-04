@@ -52,8 +52,8 @@ class ProductCard extends StatelessWidget {
               height: 80,
               width: widthValue - 5 - leftPosition,
               decoration: BoxDecoration(
-                color: Colors.black.withAlpha(50),
-              ),
+                  color: Colors.black.withAlpha(50),
+                  borderRadius: BorderRadius.circular(kBorder)),
             ),
           ),
           Positioned(
@@ -62,9 +62,9 @@ class ProductCard extends StatelessWidget {
             child: Container(
               height: 70,
               width: widthValue - 15 - leftPosition,
-              decoration: const BoxDecoration(
-                color: Colors.black,
-              ),
+              decoration: BoxDecoration(
+                  color: const Color(0xFF103257).withOpacity(0.6),
+                  borderRadius: BorderRadius.circular(kBorder)),
               child: Padding(
                 padding: const EdgeInsets.all(kPadding / 2),
                 child: Row(
@@ -120,7 +120,7 @@ class ProductCard extends StatelessWidget {
                               ),
                             ),
                           )
-                        : Container()
+                        : Container(),
                   ],
                 ),
               ),
