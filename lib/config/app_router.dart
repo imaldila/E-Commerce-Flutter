@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:e_commerce_bloc/screens/screens.dart';
 
 import 'package:flutter/material.dart';
