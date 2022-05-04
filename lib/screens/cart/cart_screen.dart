@@ -25,7 +25,7 @@ class CartScreen extends StatelessWidget {
         title: 'Cart',
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.black,
+        color: Colors.amberAccent,
         child: Container(
           height: 70,
           child: Row(
@@ -35,7 +35,9 @@ class CartScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/checkout');
+                },
                 child: Text(
                   'GO TO CHECKOUT',
                   style: kTextStyle18Bold,
@@ -163,14 +165,16 @@ class CartScreen extends StatelessWidget {
                             width: MediaQuery.of(context).size.width,
                             decoration: BoxDecoration(
                               color: Colors.black.withAlpha(50),
+                              borderRadius: BorderRadius.circular(kBorder),
                             ),
                           ),
                           Container(
                             height: 50,
                             width: MediaQuery.of(context).size.width,
                             margin: const EdgeInsets.all(5),
-                            decoration: const BoxDecoration(
-                              color: Colors.black,
+                            decoration: BoxDecoration(
+                              color: kColorCard,
+                              borderRadius: BorderRadius.circular(kBorder),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(

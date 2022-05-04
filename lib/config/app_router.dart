@@ -23,6 +23,8 @@ class AppRouter {
         return CatalogScreen.route(category: settings.arguments as Category);
       case WhislistScreen.routeName:
         return WhislistScreen.route();
+      case CheckoutScreen.routeName:
+        return CheckoutScreen.route();
       default:
         return _errorRoute();
     }
