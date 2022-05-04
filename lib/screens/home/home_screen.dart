@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../blocs/blocs.dart';
-import '../../models/models.dart';
+
 import '../../widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -24,6 +24,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(
         title: 'Zero to Unicorn',
+        automaticlyImplyLeading: false,
       ),
       bottomNavigationBar: const CustomNavBar(),
       body: Column(

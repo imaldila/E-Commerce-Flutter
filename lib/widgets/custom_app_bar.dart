@@ -5,10 +5,11 @@ import '../constant.dart';
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   const CustomAppBar({
     Key? key,
-    required this.title,
+    required this.title, this.automaticlyImplyLeading = true,
   }) : super(key: key);
 
   final String title;
+  final bool automaticlyImplyLeading;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       padding: const EdgeInsets.only(top: kPadding / 2),
       child: AppBar(
         elevation: 0,
+        automaticallyImplyLeading: automaticlyImplyLeading,
         backgroundColor: Colors.transparent,
         centerTitle: true,
         title: Text(
