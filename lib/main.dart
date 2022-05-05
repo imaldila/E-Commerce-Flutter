@@ -1,5 +1,4 @@
 import 'package:e_commerce_bloc/blocs/blocs.dart';
-import 'package:e_commerce_bloc/blocs/checkout/checkout_bloc.dart';
 
 import 'package:e_commerce_bloc/config/app_router.dart';
 import 'package:e_commerce_bloc/repository/category/category_repository.dart';

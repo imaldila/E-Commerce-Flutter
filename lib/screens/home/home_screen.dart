@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
         title: 'Zero to Unicorn',
         automaticlyImplyLeading: false,
       ),
-      bottomNavigationBar: const CustomNavBar(),
+      bottomNavigationBar: const CustomNavBar(screen: routeName),
       body: Column(
         children: [
           BlocBuilder<CategoryBloc, CategoryState>(

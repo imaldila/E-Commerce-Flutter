@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce_bloc/blocs/blocs.dart';
-import 'package:e_commerce_bloc/models/checkout_model.dart';
 import 'package:e_commerce_bloc/models/models.dart';
 import 'package:e_commerce_bloc/repository/checkout/chekcout_repository.dart';
 import 'package:equatable/equatable.dart';

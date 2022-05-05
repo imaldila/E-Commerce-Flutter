@@ -1,7 +1,9 @@
 import 'package:e_commerce_bloc/constant.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../blocs/blocs.dart';
 import '../../widgets/widgets.dart';
 
 class CheckoutScreen extends StatelessWidget {
@@ -17,70 +19,91 @@ class CheckoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController nameController = TextEditingController();
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController addressController = TextEditingController();
-    final TextEditingController cityController = TextEditingController();
-    final TextEditingController countryController = TextEditingController();
-    final TextEditingController zipCodeController = TextEditingController();
+    // final TextEditingController nameController = TextEditingController();
+    // final TextEditingController emailController = TextEditingController();
+    // final TextEditingController addressController = TextEditingController();
+    // final TextEditingController cityController = TextEditingController();
+    // final TextEditingController countryController = TextEditingController();
+    // final TextEditingController zipCodeController = TextEditingController();
     return Scaffold(
       appBar: const CustomAppBar(
         title: 'Checkout',
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.amberAccent,
-        child: Container(
-          height: 70,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                ),
-                onPressed: () {},
-                child: Text(
-                  'ORDER NOW',
-                  style: kTextStyle18Bold,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      bottomNavigationBar: const CustomNavBar(screen: routeName),
       body: Padding(
         padding: const EdgeInsets.all(kPadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'CUSTOMER INFORMATION',
-              style: kTextStyle18Bold,
-            ),
-            _buildTextFormField(emailController, context, 'Email'),
-            _buildTextFormField(nameController, context, 'Name'),
-            Text(
-              'DELIVERY INFORMATION',
-              style: kTextStyle18Bold,
-            ),
-            _buildTextFormField(addressController, context, 'Address'),
-            _buildTextFormField(cityController, context, 'City'),
-            _buildTextFormField(countryController, context, 'Country'),
-            _buildTextFormField(zipCodeController, context, 'Zip Code'),
-            Text(
-              'ORDER SUMMARY',
-              style: kTextStyle18Bold,
-            ),
-            const OrderSummary()
-          ],
+        child: BlocBuilder<CheckoutBloc, CheckoutState>(
+          builder: (context, state) {
+            if (state is CheckoutLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            if (state is CheckoutLoaded) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'CUSTOMER INFORMATION',
+                    style: kTextStyle18Bold,
+                  ),
+                  _buildTextFormField((value) {
+                    context
+                        .read<CheckoutBloc>()
+                        .add(UpdateCheckout(email: value));
+                  }, context, 'Email'),
+                  _buildTextFormField((value) {
+                    context
+                        .read<CheckoutBloc>()
+                        .add(UpdateCheckout(fullName: value));
+                  }, context, 'Name'),
+                  Text(
+                    'DELIVERY INFORMATION',
+                    style: kTextStyle18Bold,
+                  ),
+                  _buildTextFormField((value) {
+                    context
+                        .read<CheckoutBloc>()
+                        .add(UpdateCheckout(address: value));
+                  }, context, 'Address'),
+                  _buildTextFormField((value) {
+                    context
+                        .read<CheckoutBloc>()
+                        .add(UpdateCheckout(city: value));
+                  }, context, 'City'),
+                  _buildTextFormField((value) {
+                    context
+                        .read<CheckoutBloc>()
+                        .add(UpdateCheckout(country: value));
+                  }, context, 'Country'),
+                  _buildTextFormField((value) {
+                    context
+                        .read<CheckoutBloc>()
+                        .add(UpdateCheckout(zipCode: value));
+                  }, context, 'Zip Code'),
+                  Text(
+                    'ORDER SUMMARY',
+                    style: kTextStyle18Bold,
+                  ),
+                  const OrderSummary()
+                ],
+              );
+            } else {
+              return const Text('Something went wrong.');
+            }
+          },
         ),
       ),
     );
   }
 
-  Padding _buildTextFormField(TextEditingController controller,
-      BuildContext context, String labelText) {
+  Padding _buildTextFormField(
+    Function(String)? onChanged,
+    BuildContext context,
+    String labelText,
+  ) {
     return Padding(
       padding: const EdgeInsets.all(kPadding / 2),
       child: Row(
@@ -94,7 +117,7 @@ class CheckoutScreen extends StatelessWidget {
           ),
           Expanded(
             child: TextFormField(
-              controller: controller,
+              onChanged: onChanged,
               decoration: const InputDecoration(
                 // isDense: true,
                 contentPadding: EdgeInsets.only(left: kPadding / 1.2),

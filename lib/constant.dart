@@ -11,7 +11,7 @@ const Color kColorsTitle = Color(0xFF09716B);
 const Color kColorsText = Color(0xFF034844);
 const Color kColorsSub = Color(0xFF00A0A6);
 const Color kColorsBg = Color(0xFF939393);
-Color kColorCard =  Color(0xFF103257).withOpacity(0.8);
+Color kColorCard =  const Color(0xFF103257).withOpacity(0.8);
 
 TextStyle kTextStyle24BoldWhite = GoogleFonts.poppins(
   fontSize: 24,

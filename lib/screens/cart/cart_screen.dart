@@ -24,29 +24,7 @@ class CartScreen extends StatelessWidget {
       appBar: const CustomAppBar(
         title: 'Cart',
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.amberAccent,
-        child: Container(
-          height: 70,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/checkout');
-                },
-                child: Text(
-                  'GO TO CHECKOUT',
-                  style: kTextStyle18Bold,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      bottomNavigationBar: const CustomNavBar(screen: routeName),
       body: BlocBuilder<CartBloc, CartState>(
         builder: (context, state) {
           if (state is CartLoading) {
