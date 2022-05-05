@@ -25,7 +25,9 @@ class CustomNavBar extends StatelessWidget {
             ? AddToCartNavBar(product: product!)
             : (screen == '/cart')
                 ? const GoToCheckoutNavBar()
-                : const HomeNavBar(),
+                : (screen == '/checkout')
+                    ? const OrderNowNavBar()
+                    : const HomeNavBar(),
       ),
     );
   }
@@ -153,6 +155,45 @@ class GoToCheckoutNavBar extends StatelessWidget {
             'GO TO CHECKOUT',
             style: kTextStyle18Bold,
           ),
+        ),
+      ],
+    );
+  }
+}
+
+class OrderNowNavBar extends StatelessWidget {
+  const OrderNowNavBar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        BlocBuilder<CheckoutBloc, CheckoutState>(
+          builder: (context, state) {
+            if (state is CheckoutLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            if (state is CheckoutLoaded) {
+              return ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                ),
+                onPressed: () {},
+                child: Text(
+                  'ORDER NOW',
+                  style: kTextStyle18Bold,
+                ),
+              );
+            } else {
+              return const Text('Somethiwng went wrong.');
+            }
+          },
         ),
       ],
     );
