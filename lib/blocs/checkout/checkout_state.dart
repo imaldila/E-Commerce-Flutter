@@ -21,7 +21,7 @@ class CheckoutLoaded extends CheckoutState {
       total;
   final List<Product>? products;
 
-  final Checkout? checkout;
+  final Checkout checkout;
 
   CheckoutLoaded({
     this.fullName,

@@ -30,70 +30,72 @@ class CheckoutScreen extends StatelessWidget {
         title: 'Checkout',
       ),
       bottomNavigationBar: const CustomNavBar(screen: routeName),
-      body: Padding(
-        padding: const EdgeInsets.all(kPadding),
-        child: BlocBuilder<CheckoutBloc, CheckoutState>(
-          builder: (context, state) {
-            if (state is CheckoutLoading) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(kPadding),
+          child: BlocBuilder<CheckoutBloc, CheckoutState>(
+            builder: (context, state) {
+              if (state is CheckoutLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
 
-            if (state is CheckoutLoaded) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'CUSTOMER INFORMATION',
-                    style: kTextStyle18Bold,
-                  ),
-                  _buildTextFormField((value) {
-                    context
-                        .read<CheckoutBloc>()
-                        .add(UpdateCheckout(email: value));
-                  }, context, 'Email'),
-                  _buildTextFormField((value) {
-                    context
-                        .read<CheckoutBloc>()
-                        .add(UpdateCheckout(fullName: value));
-                  }, context, 'Name'),
-                  Text(
-                    'DELIVERY INFORMATION',
-                    style: kTextStyle18Bold,
-                  ),
-                  _buildTextFormField((value) {
-                    context
-                        .read<CheckoutBloc>()
-                        .add(UpdateCheckout(address: value));
-                  }, context, 'Address'),
-                  _buildTextFormField((value) {
-                    context
-                        .read<CheckoutBloc>()
-                        .add(UpdateCheckout(city: value));
-                  }, context, 'City'),
-                  _buildTextFormField((value) {
-                    context
-                        .read<CheckoutBloc>()
-                        .add(UpdateCheckout(country: value));
-                  }, context, 'Country'),
-                  _buildTextFormField((value) {
-                    context
-                        .read<CheckoutBloc>()
-                        .add(UpdateCheckout(zipCode: value));
-                  }, context, 'Zip Code'),
-                  Text(
-                    'ORDER SUMMARY',
-                    style: kTextStyle18Bold,
-                  ),
-                  const OrderSummary()
-                ],
-              );
-            } else {
-              return const Text('Something went wrong.');
-            }
-          },
+              if (state is CheckoutLoaded) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'CUSTOMER INFORMATION',
+                      style: kTextStyle18Bold,
+                    ),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(email: value));
+                    }, context, 'Email'),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(fullName: value));
+                    }, context, 'Name'),
+                    Text(
+                      'DELIVERY INFORMATION',
+                      style: kTextStyle18Bold,
+                    ),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(address: value));
+                    }, context, 'Address'),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(city: value));
+                    }, context, 'City'),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(country: value));
+                    }, context, 'Country'),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(zipCode: value));
+                    }, context, 'Zip Code'),
+                    Text(
+                      'ORDER SUMMARY',
+                      style: kTextStyle18Bold,
+                    ),
+                    const OrderSummary()
+                  ],
+                );
+              } else {
+                return const Text('Something went wrong.');
+              }
+            },
+          ),
         ),
       ),
     );

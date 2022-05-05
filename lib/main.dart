@@ -42,12 +42,12 @@ class MyApp extends StatelessWidget {
             ),
         ),
         BlocProvider<CategoryBloc>(
-          create: (context) => CategoryBloc(
+          create: (_) => CategoryBloc(
             categoryRepository: CategoryRepository(),
           )..add(LoadCategory()),
         ),
         BlocProvider<ProductBloc>(
-          create: (context) => ProductBloc(
+          create: (_) => ProductBloc(
             productRepository: ProductRepository(),
           )..add(
               LoadProduct(),
@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: CheckoutScreen.routeName,
+        initialRoute: SplashScreen.routeName,
       ),
     );
   }

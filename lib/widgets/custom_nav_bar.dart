@@ -184,7 +184,11 @@ class OrderNowNavBar extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  context
+                      .read<CheckoutBloc>()
+                      .add(ConfirmCheckout(checkout: state.checkout));
+                },
                 child: Text(
                   'ORDER NOW',
                   style: kTextStyle18Bold,
