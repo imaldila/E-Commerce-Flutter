@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../blocs/blocs.dart';
 import '../constant.dart';
-import '../models/models.dart';
 
 class OrderSummary extends StatelessWidget {
   const OrderSummary({Key? key}) : super(key: key);
