@@ -4,6 +4,7 @@ import 'package:e_commerce_bloc/config/app_router.dart';
 import 'package:e_commerce_bloc/repository/category/category_repository.dart';
 import 'package:e_commerce_bloc/repository/checkout/chekcout_repository.dart';
 import 'package:e_commerce_bloc/repository/product/product_repository.dart';
+import 'package:e_commerce_bloc/screens/order_confirmation/order_confirmation_screen.dart';
 import 'package:e_commerce_bloc/simple_bloc_observer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: SplashScreen.routeName,
+        initialRoute: OrderConfirmation.routeName,
       ),
     );
   }

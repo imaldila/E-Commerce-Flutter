@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'package:e_commerce_bloc/screens/order_confirmation/order_confirmation_screen.dart';
 import 'package:e_commerce_bloc/screens/screens.dart';
 
 import 'package:flutter/material.dart';
@@ -25,6 +26,8 @@ class AppRouter {
         return WhislistScreen.route();
       case CheckoutScreen.routeName:
         return CheckoutScreen.route();
+      case OrderConfirmation.routeName:
+        return OrderConfirmation.route();
       default:
         return _errorRoute();
     }
