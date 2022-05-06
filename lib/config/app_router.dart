@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:e_commerce_bloc/screens/order_confirmation/order_confirmation_screen.dart';
+import 'package:e_commerce_bloc/screens/payment_selection/payment_selection_screen.dart';
 import 'package:e_commerce_bloc/screens/screens.dart';
 
 import 'package:flutter/material.dart';
@@ -28,6 +29,8 @@ class AppRouter {
         return CheckoutScreen.route();
       case OrderConfirmation.routeName:
         return OrderConfirmation.route();
+      case PaymentSelection.routeName:
+        return PaymentSelection.route();
       default:
         return _errorRoute();
     }

@@ -6,3 +6,4 @@ export 'whislist/whislist_screen.dart';
 export 'cart/cart_screen.dart';
 export 'splash/splash_screen.dart';
 export 'checkout/checkout_screen.dart';
+export 'payment_selection/payment_selection_screen.dart';

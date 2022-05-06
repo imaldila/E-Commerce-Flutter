@@ -24,70 +24,106 @@ class CheckoutScreen extends StatelessWidget {
         title: 'Checkout',
       ),
       bottomNavigationBar: const CustomNavBar(screen: routeName),
-      body: Padding(
-        padding: const EdgeInsets.all(kPadding),
-        child: BlocBuilder<CheckoutBloc, CheckoutState>(
-          builder: (context, state) {
-            if (state is CheckoutLoading) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(kPadding),
+          child: BlocBuilder<CheckoutBloc, CheckoutState>(
+            builder: (context, state) {
+              if (state is CheckoutLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
 
-            if (state is CheckoutLoaded) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'CUSTOMER INFORMATION',
-                    style: kTextStyle18Bold,
-                  ),
-                  _buildTextFormField((value) {
-                    context
-                        .read<CheckoutBloc>()
-                        .add(UpdateCheckout(email: value));
-                  }, context, 'Email'),
-                  _buildTextFormField((value) {
-                    context
-                        .read<CheckoutBloc>()
-                        .add(UpdateCheckout(fullName: value));
-                  }, context, 'Name'),
-                  Text(
-                    'DELIVERY INFORMATION',
-                    style: kTextStyle18Bold,
-                  ),
-                  _buildTextFormField((value) {
-                    context
-                        .read<CheckoutBloc>()
-                        .add(UpdateCheckout(address: value));
-                  }, context, 'Address'),
-                  _buildTextFormField((value) {
-                    context
-                        .read<CheckoutBloc>()
-                        .add(UpdateCheckout(city: value));
-                  }, context, 'City'),
-                  _buildTextFormField((value) {
-                    context
-                        .read<CheckoutBloc>()
-                        .add(UpdateCheckout(country: value));
-                  }, context, 'Country'),
-                  _buildTextFormField((value) {
-                    context
-                        .read<CheckoutBloc>()
-                        .add(UpdateCheckout(zipCode: value));
-                  }, context, 'Zip Code'),
-                  Text(
-                    'ORDER SUMMARY',
-                    style: kTextStyle18Bold,
-                  ),
-                  const OrderSummary()
-                ],
-              );
-            } else {
-              return const Text('Something went wrong.');
-            }
-          },
+              if (state is CheckoutLoaded) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'CUSTOMER INFORMATION',
+                      style: kTextStyle18Bold,
+                    ),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(email: value));
+                    }, context, 'Email'),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(fullName: value));
+                    }, context, 'Name'),
+                    Text(
+                      'DELIVERY INFORMATION',
+                      style: kTextStyle18Bold,
+                    ),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(address: value));
+                    }, context, 'Address'),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(city: value));
+                    }, context, 'City'),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(country: value));
+                    }, context, 'Country'),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(zipCode: value));
+                    }, context, 'Zip Code'),
+                    const SizedBox(
+                      height: kSizeBox,
+                    ),
+                    Container(
+                      height: 60,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: kColorCard,
+                        borderRadius: BorderRadius.circular(kBorder),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/payment-selection');
+                            },
+                            child: Text(
+                              'Select Payment Method',
+                              style:
+                                  kTextStyle18Bold.copyWith(color: Colors.white),
+                            ),
+                          ),
+                          const Icon(
+                            Icons.arrow_right,
+                            color: Colors.white,
+                            size: 40,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: kSizeBox,
+                    ),
+                    Text(
+                      'ORDER SUMMARY',
+                      style: kTextStyle18Bold,
+                    ),
+                    const OrderSummary()
+                  ],
+                );
+              } else {
+                return const Text('Something went wrong.');
+              }
+            },
+          ),
         ),
       ),
     );

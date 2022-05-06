@@ -5,12 +5,12 @@ import 'package:e_commerce_bloc/repository/category/category_repository.dart';
 import 'package:e_commerce_bloc/repository/checkout/chekcout_repository.dart';
 import 'package:e_commerce_bloc/repository/product/product_repository.dart';
 import 'package:e_commerce_bloc/screens/order_confirmation/order_confirmation_screen.dart';
+import 'package:e_commerce_bloc/screens/payment_selection/payment_selection_screen.dart';
+import 'package:e_commerce_bloc/screens/splash/splash_screen.dart';
 import 'package:e_commerce_bloc/simple_bloc_observer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'screens/screens.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -64,8 +64,8 @@ class MyApp extends StatelessWidget {
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: OrderConfirmation.routeName,
+        initialRoute: SplashScreen.routeName,
       ),
     );
   }
-}
+} 
